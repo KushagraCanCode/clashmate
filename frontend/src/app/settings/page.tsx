@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import { 
   Settings, User, Castle, Bell, Moon, Bot, 
-  Lock, Palette, Trash2, Download, Save, CheckCircle2 
+  Lock, Palette, Trash2, Download, Save, CheckCircle2, Smartphone 
 } from "lucide-react";
 import { fetchApi } from "@/lib/api";
 
 const SETTING_TABS = [
   { id: "profile", label: "Profile", icon: User },
   { id: "village", label: "Village", icon: Castle },
+  { id: "mobile", label: "Mobile Companion", icon: Smartphone },
   { id: "notifications", label: "Notifications", icon: Bell },
   { id: "busy_mode", label: "Busy Mode", icon: Moon },
   { id: "ai", label: "AI Advisor", icon: Bot },
@@ -36,6 +37,15 @@ export default function SettingsPage() {
     tag: "#9V8G2YLL",
     townHall: 15,
     dataSource: "companion_synced",
+  });
+
+  // Mobile Companion Form
+  const [mobileSettings, setMobileSettings] = useState({
+    inGameHud: true,
+    lockScreenAlerts: true,
+    hapticFeedback: true,
+    dataSaver: false,
+    defaultVillage: "home",
   });
 
   // Notifications Form
@@ -223,6 +233,120 @@ export default function SettingsPage() {
                     onChange={(e) => setVillage({ ...village, tag: e.target.value })}
                     className="w-full px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-white font-mono"
                   />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* MOBILE COMPANION TAB */}
+          {activeTab === "mobile" && (
+            <div className="space-y-5">
+              <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                <div>
+                  <h3 className="font-extrabold text-base text-white">Mobile Companion & PWA</h3>
+                  <p className="text-xs text-slate-400">Tailored for mobile Clash of Clans gameplay on iOS & Android</p>
+                </div>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  PWA Ready
+                </span>
+              </div>
+
+              {/* Install PWA Guide Box */}
+              <div className="p-4 rounded-2xl glass-panel border border-amber-500/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-sm">
+                    📱
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-white">Install on Mobile Home Screen</h4>
+                    <p className="text-[11px] text-slate-400">Open in Safari/Chrome & tap &quot;Add to Home Screen&quot; for full-screen companion experience.</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => alert("To install ClashMate on your mobile device:\n\n• iOS: Tap Share -> 'Add to Home Screen'\n• Android: Tap Menu (3 dots) -> 'Install App'")}
+                  className="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold hover:bg-amber-500/30 whitespace-nowrap"
+                >
+                  Install Guide
+                </button>
+              </div>
+
+              {/* Mobile Toggles */}
+              <div className="space-y-3">
+                <label className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between cursor-pointer">
+                  <div>
+                    <p className="text-xs font-bold text-white">Floating In-Game Companion HUD</p>
+                    <p className="text-[11px] text-slate-400">Show floating quick overlay button on mobile screens for 1-tap tag copy & timers</p>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={mobileSettings.inGameHud}
+                    onChange={(e) => setMobileSettings({ ...mobileSettings, inGameHud: e.target.checked })}
+                    className="w-4 h-4 accent-amber-500 rounded"
+                  />
+                </label>
+
+                <label className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between cursor-pointer">
+                  <div>
+                    <p className="text-xs font-bold text-white">Lock Screen Banner Alerts</p>
+                    <p className="text-[11px] text-slate-400">Simulate native smartphone notification banners when builders or heroes finish</p>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={mobileSettings.lockScreenAlerts}
+                    onChange={(e) => setMobileSettings({ ...mobileSettings, lockScreenAlerts: e.target.checked })}
+                    className="w-4 h-4 accent-amber-500 rounded"
+                  />
+                </label>
+
+                <label className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between cursor-pointer">
+                  <div>
+                    <p className="text-xs font-bold text-white">Haptic Vibration on Alarm</p>
+                    <p className="text-[11px] text-slate-400">Trigger subtle vibration when critical upgrades finish while app is open</p>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={mobileSettings.hapticFeedback}
+                    onChange={(e) => setMobileSettings({ ...mobileSettings, hapticFeedback: e.target.checked })}
+                    className="w-4 h-4 accent-amber-500 rounded"
+                  />
+                </label>
+
+                <label className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between cursor-pointer">
+                  <div>
+                    <p className="text-xs font-bold text-white">Mobile Data Saver Mode</p>
+                    <p className="text-[11px] text-slate-400">Reduce background telemetry sync rate when on cellular data</p>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={mobileSettings.dataSaver}
+                    onChange={(e) => setMobileSettings({ ...mobileSettings, dataSaver: e.target.checked })}
+                    className="w-4 h-4 accent-amber-500 rounded"
+                  />
+                </label>
+              </div>
+
+              {/* Default Village Switch */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Default Mobile Village View</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: "home", label: "🏰 Home Village (TH15)" },
+                    { id: "builder_base", label: "🔨 Builder Base (BH10)" },
+                  ].map((v) => (
+                    <button
+                      key={v.id}
+                      type="button"
+                      onClick={() => setMobileSettings({ ...mobileSettings, defaultVillage: v.id })}
+                      className={`py-2 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
+                        mobileSettings.defaultVillage === v.id
+                          ? "bg-amber-500/20 text-amber-300 border-amber-500/40 font-bold"
+                          : "bg-white/5 text-slate-300 border-white/10"
+                      }`}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>

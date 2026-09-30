@@ -35,6 +35,12 @@ ClashMate is designed as an open-access, community-focused companion platform fo
 
 ### 1. Frontend (`/frontend`)
 - **Next.js 16 (App Router)** with React 19 and TypeScript.
+- **Mobile First & PWA Ready**:
+  - Web App Manifest (`/manifest.json`) supporting standalone "Add to Home Screen" installation on iOS & Android.
+  - Native thumb-reachable Mobile Bottom Navigation Bar (`MobileBottomNav.tsx`) with safe area insets (`env(safe-area-inset-bottom)`).
+  - Floating In-Game Companion HUD (`MobileCompanionHUD.tsx`) providing 1-tap Supercell player tag copy, builder timers, and lock-screen alert simulator.
+  - Home Village (TH15) vs Builder Base (BH10 / B.O.B) village mode toggling.
+  - Offline Service Worker caching (`/sw.js`).
 - **Tailwind CSS & Custom Design System**: Dark-first palette (`#090d16`, `#0f1523`), gold/amber gaming accents (`#f59e0b`), emerald for success, purple for AI.
 - **Recharts**: Builder utilization curves, resource expenditure velocity, and category distribution pies.
 - **Offline / Mock Fallback Resilience**: Built-in client-side mock fallback so the application presents realistic Town Hall 15 data even during network isolation.

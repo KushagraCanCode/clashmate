@@ -53,11 +53,16 @@ export default function TimelinePage() {
         </div>
       </div>
 
+      {/* Mobile Swipe Hint */}
+      <div className="lg:hidden flex items-center justify-center gap-1.5 py-1 px-3 rounded-full bg-white/[0.03] border border-white/5 text-[11px] text-amber-400/90 text-center">
+        <span>↔ Swipe horizontally to pan builder schedule matrix</span>
+      </div>
+
       {/* Horizontal Gantt-Style Schedule Container */}
-      <div className="p-6 rounded-3xl glass-panel border border-white/5 space-y-6 overflow-x-auto text-left">
+      <div className="p-4 sm:p-6 rounded-3xl glass-panel border border-white/5 space-y-6 overflow-x-auto text-left touch-pan-x">
         
         {/* Timeline Header Dates */}
-        <div className="min-w-[800px]">
+        <div className="min-w-[750px]">
           <div className="grid grid-cols-12 gap-2 border-b border-white/10 pb-3 mb-4">
             <div className="col-span-3 text-xs font-bold text-slate-400 uppercase tracking-wider">
               Track / Builder

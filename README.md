@@ -23,6 +23,7 @@ ClashMate does **NOT** automate gameplay or control the Clash of Clans client. I
 7. **User-Controlled Privacy & Settings (`/settings`)**: Every alert and feature toggle is independent. Easily export data in JSON format or delete your account.
 8. **Public Profile (`/profile/[username]`)**: Share achievements, Town Hall level, and war stars with clanmates while respecting your privacy settings.
 9. **Zero-Friction Demo Mode**: Instant 1-click access preloaded with realistic Town Hall 15 data.
+10. **Mobile Game Companion & PWA (`/manifest.json`)**: Built specifically for mobile Clash of Clans players on iOS & Android. Includes native thumb-friendly bottom navigation, safe-area insets, a floating in-game companion HUD drawer for quick timer checks & 1-tap Supercell player tag copying, simulated phone lock-screen alert banners, Home Village vs Builder Base (BH10) switcher, and standalone "Add to Home Screen" app experience.
 
 ---
 

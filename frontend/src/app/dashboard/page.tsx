@@ -20,6 +20,7 @@ export default function DashboardPage() {
   const [upgrades, setUpgrades] = useState<UpgradeItem[]>(MOCK_UPGRADES);
   const [insights, setInsights] = useState<AIInsight[]>(MOCK_INSIGHTS);
   const [busyState, setBusyState] = useState<BusyModeState | null>(null);
+  const [villageMode, setVillageMode] = useState<"home" | "builder_base" | "clan_capital">("home");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -86,6 +87,43 @@ export default function DashboardPage() {
             + New Upgrade
           </Link>
         </div>
+      </div>
+
+      {/* Mobile Village Mode Switcher */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <button
+          onClick={() => setVillageMode("home")}
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+            villageMode === "home"
+              ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm"
+              : "text-slate-400 hover:text-white bg-white/[0.02] border border-white/5"
+          }`}
+        >
+          <span>🏰 Home Village</span>
+          <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-200">TH15</span>
+        </button>
+        <button
+          onClick={() => setVillageMode("builder_base")}
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+            villageMode === "builder_base"
+              ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 shadow-sm"
+              : "text-slate-400 hover:text-white bg-white/[0.02] border border-white/5"
+          }`}
+        >
+          <span>🔨 Builder Base</span>
+          <span className="text-[10px] px-1.5 py-0.2 rounded bg-indigo-500/30 text-indigo-200">BH10</span>
+        </button>
+        <button
+          onClick={() => setVillageMode("clan_capital")}
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+            villageMode === "clan_capital"
+              ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm"
+              : "text-slate-400 hover:text-white bg-white/[0.02] border border-white/5"
+          }`}
+        >
+          <span>🛡️ Clan Capital</span>
+          <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/30 text-emerald-200">Peak 10</span>
+        </button>
       </div>
 
       {/* 2. Top Metric Cards Grid */}

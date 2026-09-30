@@ -1,0 +1,55 @@
+{
+  "name": "ClashMate — Clash of Clans Mobile Companion",
+  "short_name": "ClashMate",
+  "description": "Unofficial companion platform for mobile Clash of Clans players. Track timers, builders, heroes, and activate Busy Mode.",
+  "start_url": "/dashboard",
+  "id": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "orientation": "portrait-primary",
+  "categories": ["games", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "url": "/dashboard",
+      "description": "Village overview and builder timers"
+    },
+    {
+      "name": "Busy Mode",
+      "url": "/busy-mode",
+      "description": "Activate quiet mode while away"
+    },
+    {
+      "name": "AI Advisor",
+      "url": "/ai",
+      "description": "Ask tactical upgrade advice"
+    },
+    {
+      "name": "Active Upgrades",
+      "url": "/upgrades",
+      "description": "Track ongoing builders & laboratory"
+    }
+  ]
+}

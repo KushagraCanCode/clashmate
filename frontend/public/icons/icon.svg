@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- App Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- Outer Gold Border -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="url(#goldGrad)" stroke-width="8" opacity="0.4" />
+  
+  <!-- Outer Shield Shadow / Glow -->
+  <path d="M256 64 L416 128 C416 272 352 384 256 448 C160 384 96 272 96 128 Z" fill="#f59e0b" opacity="0.15" filter="url(#glow)" />
+  
+  <!-- Golden Shield Outer -->
+  <path d="M256 74 L406 134 C406 268 346 374 256 434 C166 374 106 268 106 134 Z" fill="url(#goldGrad)" stroke="#fef08a" stroke-width="6" />
+  
+  <!-- Shield Inner Blue Core -->
+  <path d="M256 96 L384 148 C384 260 332 350 256 404 C180 350 128 260 128 148 Z" fill="url(#shieldGrad)" stroke="#60a5fa" stroke-width="4" />
+  
+  <!-- Crossed Clash Swords & Star -->
+  <g fill="#fef08a" stroke="#78350f" stroke-width="2">
+    <!-- Star -->
+    <polygon points="256,170 268,206 306,206 275,228 287,264 256,242 225,264 237,228 206,206 244,206" />
+  </g>
+  
+  <!-- Hammer / Builder Icon Motif -->
+  <path d="M220 280 L292 280 L302 300 L210 300 Z" fill="url(#goldGrad)" />
+  <rect x="246" y="300" width="20" height="60" rx="4" fill="#d97706" stroke="#92400e" stroke-width="2" />
+  
+  <!-- ClashMate Monogram -->
+  <text x="256" y="385" font-family="system-ui, sans-serif" font-weight="900" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="3">CLASHMATE</text>
+</svg>
